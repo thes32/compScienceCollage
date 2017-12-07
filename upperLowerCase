@@ -1,0 +1,44 @@
+package javaapplication44;
+import java.util.*;
+
+public class JavaApplication44 {
+    static String target;
+    
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the string you want to manipulate:");
+        System.out.println("");
+        
+        target = scan.nextLine();
+        
+        String mani = manipulate(target);
+        
+        System.out.println(mani);
+    }
+    
+    public static String manipulate(String target) {
+        target = target.toLowerCase();
+        String mani = "";
+        char[] array = target.toCharArray();
+        
+        int nums = 2;
+        int leng = target.length();
+        for (int i = 0; i < leng; i++) {
+            
+            if (Character.isLetter(array[i])) {
+                if (nums % 2 == 0) {
+                    char char1 = array[i];
+                    array[i] = Character.toUpperCase(char1);
+                } else {
+                    //nothing
+                }
+                nums++;
+            } else {
+                //nothing
+            }
+        }
+        mani = String.valueOf(array);
+        return mani;
+    }
+    
+}
