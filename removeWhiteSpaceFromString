@@ -1,0 +1,23 @@
+package javaapplication46;
+import java.util.*;
+
+public class JavaApplication46 {
+    static Scanner scan;
+    static String newS;
+    
+    public static void main(String[] args) {
+        scan = new Scanner(System.in);
+        System.out.println("Give me a string!");
+        newS = scan.nextLine();
+        
+        newS = manipulate(newS);
+        
+        System.out.println(newS);
+    }
+    
+    public static String manipulate(String target) {
+        target = target.replaceAll("\\s","");
+        String mani = target;
+        return mani;
+    }
+}
