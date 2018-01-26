@@ -1,0 +1,77 @@
+package javaapplication48;
+import java.io.*;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class JavaApplication48 {
+    static Map<String, Integer> hmp;
+    static Scanner scan;
+    
+    public static void main(String[] args) {
+        hmp = new HashMap<>();
+        scan = new Scanner(System.in);
+        
+        inPut();
+    }
+    
+    public static void inPut() {
+        System.out.println("Car make:");
+        String key = scan.next().toUpperCase();
+        
+        System.out.println("Stock");
+        int stock = scan.nextInt();
+        
+        hmp.put(key, stock);
+        
+        System.out.println(hmp);
+        
+        end();
+    }
+    
+    public static void deLete() {
+        System.out.println("What brand do you want to delete?");
+        String key = scan.next().toUpperCase();
+        
+        System.out.println(key + "?");
+        String inp = scan.next().toLowerCase();
+        
+        if (inp.equals("yes")) {}
+        else 
+            deLete();
+        
+        hmp.remove(key);
+        
+        System.out.println(hmp);
+        end();
+    }
+    
+    public static void end(){
+        System.out.println("Do you want to add or to delete an element?");
+        String inp = scan.next();
+        
+        if (inp.toLowerCase().contains("add"))
+            inPut();
+        else if (inp.toLowerCase().contains("delete")) 
+            deLete();
+        else {
+            try {
+                write();
+            } catch (IOException ex) {
+                Logger.getLogger(JavaApplication48.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    public static void write() throws IOException {
+        File fl = new File("N:\\file.csv");
+        FileWriter fw = new FileWriter(fl);
+        BufferedWriter bf = new BufferedWriter(fw);
+        PrintWriter pw = new PrintWriter(bf);
+        
+        for (String key: hmp.keySet()) {
+            pw.write(key + "," + hmp.get(key) + "\n");
+        }
+        pw.close();
+    }
+}
